@@ -1,15 +1,37 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+    const {user,logOut}=useContext(AuthContext);
+    const handleSignOut=()=>{
+        logOut()
+        .then(result=>{
+            console.log(result);
+            Swal.fire({
+                icon: "success",
+                title: "Yes...",
+                text: "You have successfully logout",
+                
+              });
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+    }
     const navlink=<>
             <li className="text-2xl font-semibold"> <NavLink to={'/'}>Home</NavLink></li>
             <li className="text-2xl font-semibold"> <NavLink to={'/addproduct'}>Add Product</NavLink></li>
+            <li className="text-2xl font-semibold"> <NavLink to={'/product'}>Products</NavLink></li>
+            <li className="text-2xl font-semibold"> <NavLink to={'/mycart'}>MyCart</NavLink></li>
             <li className="text-2xl font-semibold"> <NavLink to={'/login'}>Login</NavLink></li>
             <li className="text-2xl font-semibold"> <NavLink to={'/register'}>Register</NavLink></li>
-            <li className="text-2xl font-semibold"> <NavLink to={'/mycart'}>My Cart</NavLink></li>
+            
+            <li className="text-2xl font-semibold"> <NavLink to={'/user'}>User</NavLink></li>
         </>
     return (
-        <div className="navbar bg-orange-400">
+        <div className="navbar bg-[#1B9C85] shadow-2xl text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -19,7 +41,7 @@ const Navbar = () => {
                     {navlink}
                 </ul>
                 </div>
-                <a className="btn btn-secondary text-xl"> E-Shop</a>
+                <a className="btn btn-secondary text-2xl"> E-Shop</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -30,9 +52,18 @@ const Navbar = () => {
                <div>
                     <img className="w-20 h-20 mr-3 rounded-full" src="" alt="profile picture" />
                </div>
-                <div>
-                    <a className="btn">Button</a>
+               
+               {
+                user?
+                 <div>
+                    <button onClick={handleSignOut} className="btn text-2xl btn-secondary ">Logout</button>
                 </div>
+                :
+                <div>
+                    <Link to={'/login'}><button className="btn text-2xl btn-secondary ">Login</button></Link>
+                </div>
+               }
+                
             </div>
         </div>
     );

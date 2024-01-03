@@ -1,8 +1,10 @@
 
+
+
 const MyCart = () => {
     return (
         <div>
-            <h1>MyCart</h1>
+            <h1>My Cart</h1>
         </div>
     );
 };
