@@ -51,8 +51,8 @@ const Login = () => {
         })
     }
     return (
-            <div className="flex bg-[#F6ECA9] ">
-                <div className="flex w-3/4  py-12  bg-[#45dac1] my-12 flex-col items-center justify-center">
+            <div className="flex bg-[#F9F6E2] ">
+                <div className="flex w-3/4  py-12  bg-[#F9F6E2] my-12 flex-col items-center justify-center">
                     <div className="text-center">
                         <h1 className="text-5xl bg-[#178de7] text-white p-6 rounded-lg font-bold">Login Now!</h1>                
                     </div>
@@ -70,7 +70,7 @@ const Login = () => {
                             </label>
                             <input type="password" name="password" placeholder="password" className="input text-3xl p-2 input-bordered" required />                        
                             <label className="label">
-                                <a href="#" className="label-text-alt text-white link text-2xl link-hover">Forgot password?</a>
+                                <a href="#" className="label-text-alt  link text-2xl link-hover">Forgot password?</a>
                             </label>
                             </div>
                             <div className="form-control mt-6">
@@ -81,7 +81,7 @@ const Login = () => {
                     </div> 
                 </div>
 
-                <div className="text-center w-1/4 bg-[#c721bf] my-12  text-4xl">
+                <div className="text-center w-1/4 bg-[#F9F6E2] my-12  text-4xl">
                     <h1 className="text-4xl font-bold text-center my-12 bg-[#0f4f80] text-white p-6 rounded-lg ">Login with !!</h1>
                     <div className="flex flex-col gap-5 justify-center items-center">
                         <button className="btn btn-secondary  text-3xl w-2/3"><FaGooglePlusSquare></FaGooglePlusSquare>Google</button> 

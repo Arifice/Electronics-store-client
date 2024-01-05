@@ -99,7 +99,7 @@ const MyCart = () => {
                 </div>
             </div>
             <div >
-               <img className="w-96 h-96" src="https://i.postimg.cc/XJRvFfXy/imageedit-0-3563104294.jpg" alt="" />
+               <img className="w-96 h-96" src="https://i.postimg.cc/MTK4TSTv/imageedit-2-6578762515.png" alt="" />
             </div>
             </div>
             <div className="p-8 ">

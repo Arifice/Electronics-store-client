@@ -27,7 +27,7 @@ const Footer = () => {
                     <header className="footer-title">Newsletter</header> 
                     <fieldset className="form-control w-80">
                     <label className="label">
-                        <span className="label-text text-2xl">Enter your email address</span>
+                        <span className="label-text text-white text-2xl">Enter your email address</span>
                     </label> 
                     <div className="join text-2xl">
                         <input type="text" placeholder="username@site.com" className="input text-2xl input-bordered join-item" /> 

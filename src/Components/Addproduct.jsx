@@ -36,7 +36,7 @@ const Addproduct = () => {
             })
         }
     return (
-        <div className="flex  flex-col items-center justify-center bg-[#C4C1A4]">
+        <div className="flex  flex-col items-center justify-center bg-[#F9F6E2]">
                 <div className="text-center">
                     <h1 className="text-5xl mt-12 font-bold bg-black text-white p-5 px-10 shadow-2xl rounded-lg"> Add Product !</h1>                
                 </div>

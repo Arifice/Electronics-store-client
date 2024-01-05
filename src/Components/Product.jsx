@@ -2,6 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaCartPlus } from "react-icons/fa";
 import { useState } from "react";
+import DiscountOffer from "./DiscountOffer";
 
 const Product = () => {
     const loadedProducts=useLoaderData(); 
@@ -67,7 +68,7 @@ const Product = () => {
 
     return (
         <div>
-            <h1 className="text-center text-5xl font-bold my-24 text-purple-600">Total product : {products.length}</h1>
+            <DiscountOffer></DiscountOffer>
             <div className="grid grid-cols-3 gap-4">
                 {
                     products.map(product=>(

@@ -5,7 +5,7 @@ import moment from 'moment';
 const Header = () => {
     return (
         <div>
-            <div className="shadow-lg bg-[#E0AED0] pt-8 space-y-3">
+            <div className="shadow-lg bg-[#F9F6E2] pt-8 space-y-3">
                 <div className="flex justify-center items-center">
                     <div>
                         <img className="w-32 h-32 mx-3 rounded-full"  src="https://i.postimg.cc/kX5JpzhC/imageedit-0-9538373754.jpg" alt="logo" />

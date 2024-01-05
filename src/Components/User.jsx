@@ -45,7 +45,7 @@ const User = () => {
     }
     
     return (
-        <div className="overflow-x-auto bg-[#EEF296] p-8">
+        <div className="overflow-x-auto bg-[#F9F6E2] p-8">
             <table className="table">
                 <caption className="text-5xl font-bold text-black">User Information</caption>
                 {/* head */}
