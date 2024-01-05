@@ -1,6 +1,7 @@
 import {  useLoaderData, useNavigate } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
+import Swal from "sweetalert2";
 
 const DetailsProduct = () => {
     const product=useLoaderData();
@@ -9,6 +10,26 @@ const DetailsProduct = () => {
 
     const handleGoback=()=>{
         navigate(-1);
+    }
+    const handleAddToCart=()=>{
+        fetch('http://localhost:5000/cart',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(product)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Product is successfully added to the cart",        
+                })
+            }
+        })
     }
     
     return (
@@ -40,7 +61,7 @@ const DetailsProduct = () => {
                     </div>
                     <p className="text-justify text-3xl bg-[#756AB6] rounded-lg text-white p-5">{description}</p>
                     <div className="flex justify-center">
-                    <button  className="btn btn-success m-5  btn-outline text-4xl "><FaCartPlus></FaCartPlus>Add to Cart</button> 
+                    <button onClick={handleAddToCart} className="btn btn-success m-5  btn-outline text-4xl "><FaCartPlus></FaCartPlus>Add to Cart</button> 
                     <button onClick={handleGoback} className="btn btn-ghost m-5  btn-outline text-4xl "><IoArrowBackCircle></IoArrowBackCircle>Go Back</button> 
                     
                     

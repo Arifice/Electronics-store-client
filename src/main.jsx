@@ -17,6 +17,7 @@ import AuthProvider from './Provider/AuthProvider';
 import UpdateProduct from './Components/UpdateProduct';
 import DetailsProduct from './Components/DetailsProduct';
 import Product from './Components/Product';
+import UpdateUser from './Components/UpdateUser';
 
 
 
@@ -51,11 +52,12 @@ const router = createBrowserRouter([
       {
         path:'/mycart',
         element:<MyCart></MyCart>,
-        
+        loader:()=>fetch('http://localhost:5000/cart')        
       },
       {
         path: '/user',
-        element:<User></User>
+        element:<User></User>,
+        loader:()=>fetch('http://localhost:5000/user')
       },
       {
         path:'/updateProduct/:id',
@@ -66,6 +68,11 @@ const router = createBrowserRouter([
         path:'/product/:id',
         element:<DetailsProduct></DetailsProduct>,
         loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`)
+      },
+      {
+        path:'/updateUser/:id',
+        element:<UpdateUser></UpdateUser>,
+        loader:({params})=>fetch(`http://localhost:5000/user/${params.id}`)
       }
       
     ]

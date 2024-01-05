@@ -1,9 +1,36 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import { FaCartPlus } from "react-icons/fa";
+import { useState } from "react";
 
 const Product = () => {
-    const products=useLoaderData(); 
+    const loadedProducts=useLoaderData(); 
+    const [products,setProducts]=useState(loadedProducts);
+
+    const handleAddtoCart=(id)=>{
+        const findProduct=products.find(product=>product._id===id);
+        const {_id,productName,brandName,type,price,description,image}=findProduct;
+        const cartProduct={_id,productName,brandName,type,price,description,image}
+        console.log(findProduct,cartProduct);
+        fetch('http://localhost:5000/cart',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(cartProduct)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.insertedId){                
+                Swal.fire({
+                    title: "Success",
+                    text: "Your product successfully added to the cart.",
+                    icon: "success"
+                  });
+            }
+        })
+    }
     
     const handleDelete=_id=>{
         console.log(_id);
@@ -25,6 +52,8 @@ const Product = () => {
               .then(data=>{
                 console.log(data);
                 if(data.deletedCount>0){
+                    const remainigProducts=products.filter(product=>product._id !=_id)
+                    setProducts(remainigProducts);
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your product has been deleted.",
@@ -48,6 +77,7 @@ const Product = () => {
                                 <div className="card-body">
                                     <h2 className="card-title text-3xl font-semibold"> Name: {product?.productName}              
                                         <div className="badge badge-secondary text-xl py-3 font-semibold ">New</div>
+                                        <div onClick={()=>handleAddtoCart(product._id)} className="btn btn-ghost text-2xl btn-outline font-semibold "><FaCartPlus></FaCartPlus></div>
                                     </h2>
                                     <div className=" flex  justify-between">                    
                                         <p className="bg-[#FF9800] text-center p-2 mr-2 text-white rounded-md font-semibold">Brand : {product?.brandName}</p>

@@ -17,20 +17,38 @@ const Register = () => {
         form.reset();
         createUser(email,password)
         .then(result=>{
-            console.log(result);
-            Swal.fire({
-                icon: "success",
-                title: "Yes...",
-                text: "You have successfully Registered",
-                
-              });
+            console.log(result.user);
+            const createAt=result?.user?.metadata?.creationTime;
+            const lastSignAt=result?.user?.metadata?.lastSignInTime;
+            const emailVerify=result?.user?.emailVerified;
+            const newUser={name,photo,email,password,createAt,lastSignAt,emailVerify}
+
+            // send user to the server
+            fetch('http://localhost:5000/user',{
+                method:'POST',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(newUser)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data);
+                if(data.insertedId){
+                    Swal.fire({
+                        icon: "success",
+                        title: "Yes...",
+                        text: "You have successfully Registered",                        
+                    });
+                }                
+            })            
         })
         .catch(error=>{
             console.log(error);
         })
     }
     return (
-            <div className="flex  flex-col items-center justify-center bg-[#FFA33C]">
+            <div className="flex  flex-col items-center justify-center bg-[#d89d59]">
                 <div className="text-center">
                     <h1 className="text-5xl mt-12 font-bold bg-black text-white p-4 rounded-lg">Register Now!</h1>                
                 </div>
@@ -67,7 +85,7 @@ const Register = () => {
                         <input type="submit" value={'Register'} className="btn text-3xl btn-secondary "/>
                         </div>
                     </form>
-                    <h1 className="text-3xl text-center mb-8">Already have Registered? Please<Link to={'/login'} className="text-blue-700 underline ml-3">Login</Link> </h1>
+                    <h1 className="text-3xl text-center mb-8">Already have Registered? Please<Link to={'/login'} className="text-red-600 underline font-bold ml-3">Login</Link> </h1>
                 </div>
             </div>
             

@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaGooglePlusSquare, FaFacebook,FaGithub} from "react-icons/fa";
-const Login = () => {
+const Login = () => {    
     const {signIn}=useContext(AuthContext);
+
     const handleLogin=e=>{
         e.preventDefault();
         const form=e.target;
@@ -15,12 +16,34 @@ const Login = () => {
         form.reset();
         signIn(email,password)
         .then(result=>{
-            console.log(result);
+            console.log(result.user);
+            const createdAt=result?.user?.metadata?.creationTime;
+            const lastSignAt=result?.user?.metadata?.lastSignInTime;
+            const emailVerify=result?.user?.emailVerified;
+            const updateUser={email,createdAt,lastSignAt,emailVerify};
+            // update in the database
+            fetch('http://localhost:5000/user',{
+                method: 'PATCH',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(updateUser)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data);
+                // if(data.modifiedCount>0){
+                //     Swal.fire({
+                //         icon: "success",
+                //         title: "Yes...",
+                //         text: "Your information is successfully updated",
+                //     })
+                // }
+            })            
             Swal.fire({
                 icon: "success",
                 title: "Yes...",
                 text: "You have successfully login",
-
             })
         })
         .catch(error=>{
@@ -54,7 +77,7 @@ const Login = () => {
                             <input type="submit" value={'Login'} className="btn btn-secondary  text-3xl"/>
                             </div>
                         </form>
-                        <h1 className="text-3xl text-center mb-8">Do not have Registered? Please<Link to={'/register'} className="text-blue-700 underline ml-3">Register</Link> </h1>
+                        <h1 className="text-3xl text-center mb-8">Do not have Registered? Please<Link to={'/register'} className="text-red-600 font-bold underline ml-3">Register</Link> </h1>
                     </div> 
                 </div>
 
