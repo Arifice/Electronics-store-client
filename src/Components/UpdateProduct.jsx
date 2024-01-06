@@ -41,8 +41,8 @@ const UpdateProduct = () => {
                 }
                 else{
                     Swal.fire({
-                        icon: "worning",
-                        title: "worning",
+                        icon: "warning",
+                        title: "warning",
                         text: "You do not change anything",        
                     })
                    navigate(location?.state ? location?.state :'/');
