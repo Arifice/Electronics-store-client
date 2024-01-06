@@ -19,9 +19,7 @@ const Register = () => {
         const photo=form.photo.value;
         const email=form.email.value;
         const password=form.password.value;
-        const gendar=form.gendar.value;
-        
-        const user={name,photo,email,password,gendar};
+        const user={name,photo,email,password};
         
         console.log(user); 
         if(password.length<6){
@@ -69,7 +67,7 @@ const Register = () => {
                 const createAt=result?.user?.metadata?.creationTime;
                 const lastSignAt=result?.user?.metadata?.lastSignInTime;
                 const emailVerify=result?.user?.emailVerified;
-                const newUser={name,photo,email,password,gendar,createAt,lastSignAt,emailVerify}
+                const newUser={name,photo,email,password,createAt,lastSignAt,emailVerify}
 
                 // send user to the server
                 fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user',{
@@ -86,9 +84,9 @@ const Register = () => {
                         Swal.fire({
                             icon: "success",
                             title: "Yes...",
-                            text: "You have successfully Registered",                        
+                            text: "You have successfully Registered please login now",                        
                         });
-                        navigate('/');
+                        navigate(location?.state?location.state:'/');
                     }                
                 })            
             })

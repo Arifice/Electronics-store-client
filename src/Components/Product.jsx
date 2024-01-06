@@ -7,8 +7,10 @@ import DiscountOffer from "./DiscountOffer";
 const Product = () => {
     const loadedProducts=useLoaderData(); 
     const [products,setProducts]=useState(loadedProducts);
+    console.log('load products',products);
+
     const [carts, setCarts]=useState([]);
-    console.log('product carts',carts);
+    console.log('fectch cart',carts);
 
     useEffect(()=>{
         fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart')
@@ -19,9 +21,15 @@ const Product = () => {
     },[])
 
     const handleAddtoCart=(id)=>{
-        const findProduct=products.find(product=>product._id===id);        
+        const findProduct=products.filter(product=>product._id===id);
+        // const {brandName} =findProduct;       
         console.log('find product',findProduct);  
-        const cart=carts.find(cart=>cart._id===id);
+        
+        const cart=carts.filter(cart=>cart._id===id);
+
+        console.log('cart',cart);
+        console.log('id',findProduct._id,cart._id);
+        
         if(findProduct._id===cart._id){
             Swal.fire({
                 title: "warning",
@@ -99,12 +107,11 @@ const Product = () => {
                                         <div className="badge badge-secondary text-xl py-3 font-semibold ">New</div>
                                         <div onClick={()=>handleAddtoCart(product._id)} className="btn btn-ghost text-2xl btn-outline font-semibold "><FaCartPlus></FaCartPlus></div>
                                     </h2>
-                                    <div className=" flex  justify-between">                    
-                                        <p className="bg-[#FF9800] text-center p-2 mr-2 text-white rounded-md font-semibold">Brand : {product?.brandName}</p>
-                                        <p className="bg-[#186F65] text-center p-2 ml-2 text-white rounded-md font-semibold">Price : {product?.price} Tk</p> 
-                                    </div>
-                                    <div className="flex justify-between">
-                                        <p className="bg-[#860A35] text-center p-2  text-white rounded-md font-semibold">Category: {product?.type}</p>
+
+                                    <div className="my-1 text-3xl font-semibold">                    
+                                        <p className="  ">Brand : {product?.brandName}</p>
+                                        <p className="">Price : {product?.price} Tk</p>
+                                        <p className=" ">Category: {product?.type}</p>
                                     </div>
                                     <div className="rating flex justify-center rating-lg mt-2 ">
                                         <div className="rating gap-1">
@@ -121,7 +128,7 @@ const Product = () => {
                                     <div className="card-actions justify-end">
                                         <div className="btn btn-ghost text-2xl  btn-outline"><Link to={`/updateProduct/${product?._id}`}>Edit</Link></div> 
                                         <div onClick={()=>handleDelete(product?._id)} className="btn btn-primary text-2xl  btn-outline">Delete</div> 
-                                        <div  className="btn btn-secondary text-2xl  btn-outline"><Link to={`/product/${product?._id}`}>Details</Link></div>
+                                        <div  className="btn btn-secondary text-2xl  btn-outline"><Link to={`/details/${product?._id}`}>Details</Link></div>
                                     </div>                                        
                                 </div>
                              </div>

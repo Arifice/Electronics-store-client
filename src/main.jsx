@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         loader:({params})=>fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product/${params.id}`)
       },
       {
-        path:'/product/:id',
+        path:'/details/:id',
         element:<PrivateRoute><DetailsProduct></DetailsProduct></PrivateRoute>,
         loader:({params})=>fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product/${params.id}`)
       },

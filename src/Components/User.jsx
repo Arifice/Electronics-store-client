@@ -54,7 +54,6 @@ const User = () => {
                     <th className="border-2 lg:w-1/12 border-black">SL</th>
                     <th className="border-2 lg:w-1/12 border-black">Image</th>
                     <th className="border-2 lg:w-3/12 border-black">Name</th>
-                    <th className="border-2 lg:w-1/12 border-black">Gendar</th>
                     <th className="border-2 lg:w-2/12 border-black">Email</th>
                     <th className="border-2 lg:w-1/12 border-black">CreateAt</th>
                     <th className="border-2 lg:w-1/12 border-black">Last signAt</th>
@@ -68,7 +67,6 @@ const User = () => {
                                 <th className="border-2  border-black">{idx+1}</th>
                                 <td className="border-2  border-black"><img className="w-20 h-20 rounded-full" src={user?.photo} alt="" /></td>
                                 <td className="border-2  text-2xl border-black">{user.name}</td>
-                                <td className="border-2  text-2xl border-black">{user.gendar}</td>
                                 <td className="border-2 text-2xl border-black">{user.email}</td>
                                 <td className="border-2 border-black ">{user?.createAt}</td>
                                 <td className="border-2 border-black ">{user?.lastSignAt}</td>

@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { FaGooglePlusSquare,FaGithub} from "react-icons/fa";
 const Login = () => {   
     const navigate=useNavigate(); 
-    const {signIn,forgetPassword,emailVerification,signWithGoogle,signWithGithub}=useContext(AuthContext);
+    const {user,signIn,forgetPassword,emailVerification,signWithGoogle,signWithGithub}=useContext(AuthContext);
     const emailRef=useRef(null);
     const location=useLocation();
     console.log('login',location);
@@ -20,66 +20,66 @@ const Login = () => {
         console.log(user);
         form.reset();
         signIn(email,password)
-        .then(result=>{
-            console.log(result.user);
-            if(!result.user.emailVerify){
-                emailVerification(result.user)
-                .then(result=>{
-                    console.log(result);
-                    Swal.fire({
-                        icon: "success",
-                        title: "Yes...",
-                        text: "Please check & verify your email",                        
-                    });
-                    navigate(location?.state ? location.state : '/');
+            .then(result=>{
+                console.log(result.user);
+                if(!result.user.emailVerify){
+                    emailVerification(result.user)
+                        .then(result=>{
+                            console.log(result);
+                            Swal.fire({
+                                icon: "success",
+                                title: "Yes...",
+                                text: "Please check & verify your email",                        
+                            });                   
 
+                            })
+                            .catch(error=>{
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "No...",
+                                    text: `${error.message}`,                        
+                                });
+                            })
+                }
+                const createdAt=result?.user?.metadata?.creationTime;
+                const lastSignAt=result?.user?.metadata?.lastSignInTime;
+                const emailVerify=result?.user?.emailVerified;
+                const updateUser={email,createdAt,lastSignAt,emailVerify};
+                // update in the database
+                fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user',{
+                        method: 'PATCH',
+                        headers:{
+                            'content-type':'application/json'
+                        },
+                        body:JSON.stringify(updateUser)
                     })
-                    .catch(error=>{
-                        Swal.fire({
-                            icon: "error",
-                            title: "No...",
-                            text: `${error.message}`,                        
-                        });
-                    })
-            }
-            const createdAt=result?.user?.metadata?.creationTime;
-            const lastSignAt=result?.user?.metadata?.lastSignInTime;
-            const emailVerify=result?.user?.emailVerified;
-            const updateUser={email,createdAt,lastSignAt,emailVerify};
-            // update in the database
-            fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user',{
-                method: 'PATCH',
-                headers:{
-                    'content-type':'application/json'
-                },
-                body:JSON.stringify(updateUser)
+                    .then(res=>res.json())
+                    .then(data=>{
+                        console.log(data);
+                        // if(data.modifiedCount>0){
+                        //     Swal.fire({
+                        //         icon: "success",
+                        //         title: "Yes...",
+                        //         text: "Your information is successfully updated",
+                        //     })
+                        // }
+                    })            
+                Swal.fire({
+                    icon: "success",
+                    title: "Yes...",
+                    text: "You have successfully login",
+                })
+                navigate(location?.state?location.state:'/');
             })
-            .then(res=>res.json())
-            .then(data=>{
-                console.log(data);
-                // if(data.modifiedCount>0){
-                //     Swal.fire({
-                //         icon: "success",
-                //         title: "Yes...",
-                //         text: "Your information is successfully updated",
-                //     })
-                // }
-            })            
-            Swal.fire({
-                icon: "success",
-                title: "Yes...",
-                text: "You have successfully login",
+            .catch(error=>{
+                console.log(error);
+                Swal.fire({
+                    icon: "errore",
+                    title: "Failed",
+                    text: `${error.message}`,
+                })
             })
-        })
-        .catch(error=>{
-            console.log(error);
-            Swal.fire({
-                icon: "errore",
-                title: "Failed",
-                text: `${error.message}`,
-            })
-        })
-    }
+        }
 
     const handleForgetPassword=()=>{
         const email=emailRef.current.value;
@@ -114,8 +114,10 @@ const Login = () => {
     const handleGoogle=()=>{
         signWithGoogle()
             .then(result=>{
-                console.log(result);
+                console.log('google',result);
+                console.log(user);
                 navigate(location?.state?location.state:'/');
+
             })
             .catch(error=>{
                 console.log(error);
