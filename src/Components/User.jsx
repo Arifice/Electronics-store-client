@@ -45,19 +45,20 @@ const User = () => {
     }
     
     return (
-        <div className="overflow-x-auto bg-[#F9F6E2] p-8">
+        <div className="overflow-x-auto bg-[#F9F6E2] p-4 lg:p-8">
             <table className="table">
-                <caption className="text-5xl font-bold text-black">User Information</caption>
+                <caption className="text-5xl  font-bold text-black">User Information</caption>
                 {/* head */}
-                <thead className="text-3xl font-bold text-black">
+                <thead className="lg:text-2xl lg:font-semibold text-black">
                 <tr className="border-2 border-black">
-                    <th className="border-2 w-1/12 border-black">SL</th>
-                    <th className="border-2 w-1/12 border-black">Image</th>
-                    <th className="border-2 w-4/12 border-black">Name</th>
-                    <th className="border-2 w-3/12 border-black">Email</th>
-                    <th className="border-2 w-1/12 border-black">CreateAt</th>
-                    <th className="border-2 w-1/12 border-black">Last signAt</th>
-                    <th className="border-2 w-1/12 border-black">Action</th>                    
+                    <th className="border-2 lg:w-1/12 border-black">SL</th>
+                    <th className="border-2 lg:w-1/12 border-black">Image</th>
+                    <th className="border-2 lg:w-3/12 border-black">Name</th>
+                    <th className="border-2 lg:w-1/12 border-black">Gendar</th>
+                    <th className="border-2 lg:w-2/12 border-black">Email</th>
+                    <th className="border-2 lg:w-1/12 border-black">CreateAt</th>
+                    <th className="border-2 lg:w-1/12 border-black">Last signAt</th>
+                    <th className="border-2 lg:w-1/12 border-black">Action</th>                    
                 </tr>
                 </thead>           
                 {
@@ -67,6 +68,7 @@ const User = () => {
                                 <th className="border-2  border-black">{idx+1}</th>
                                 <td className="border-2  border-black"><img className="w-20 h-20 rounded-full" src={user?.photo} alt="" /></td>
                                 <td className="border-2  text-2xl border-black">{user.name}</td>
+                                <td className="border-2  text-2xl border-black">{user.gendar}</td>
                                 <td className="border-2 text-2xl border-black">{user.email}</td>
                                 <td className="border-2 border-black ">{user?.createAt}</td>
                                 <td className="border-2 border-black ">{user?.lastSignAt}</td>

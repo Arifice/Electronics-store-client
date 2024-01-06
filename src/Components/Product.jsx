@@ -1,24 +1,42 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaCartPlus } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DiscountOffer from "./DiscountOffer";
 
 const Product = () => {
     const loadedProducts=useLoaderData(); 
     const [products,setProducts]=useState(loadedProducts);
+    const [carts, setCarts]=useState([]);
+    console.log('product carts',carts);
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/cart')
+        .then(result=>result.json())
+        .then(data=>{
+            setCarts(data);
+        })
+    },[])
 
     const handleAddtoCart=(id)=>{
-        const findProduct=products.find(product=>product._id===id);
-        const {_id,productName,brandName,type,price,description,image}=findProduct;
-        const cartProduct={_id,productName,brandName,type,price,description,image}
-        console.log(findProduct,cartProduct);
-        fetch('http://localhost:5000/cart',{
+        const findProduct=products.find(product=>product._id===id);        
+        console.log('find product',findProduct);  
+        const cart=carts.find(cart=>cart._id===id);
+        if(findProduct._id===cart._id){
+            Swal.fire({
+                title: "warning",
+                text: "You have already added this product",
+                icon: "warning"
+              });
+              return;
+        }     
+        else{
+            fetch('http://localhost:5000/cart',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
             },
-            body:JSON.stringify(cartProduct)
+            body:JSON.stringify(findProduct)
         })
         .then(res=>res.json())
         .then(data=>{
@@ -31,6 +49,7 @@ const Product = () => {
                   });
             }
         })
+        }
     }
     
     const handleDelete=_id=>{
@@ -69,7 +88,7 @@ const Product = () => {
     return (
         <div>
             <DiscountOffer></DiscountOffer>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {
                     products.map(product=>(
                         <div key={product._id}>

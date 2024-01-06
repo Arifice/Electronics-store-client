@@ -1,9 +1,17 @@
-import { Link,  } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate,  } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Products = ({product}) => {  
+  const {user}=useContext(AuthContext);
+  const navigate=useNavigate();
     const {productName,image,brandName,type,price,description,_id}=product
     const handleDelete=_id=>{
+      if(!user){
+          navigate('/login');
+          return;
+      }
         console.log(_id);
         Swal.fire({
             title: "Are you sure?",
@@ -36,7 +44,7 @@ const Products = ({product}) => {
     }
     return (
         <div className="card  bg-white border-2 border-teal-500  shadow-xl">
-            <figure><img className="p-5 w-full h-64 " src={image}  /></figure>
+            <figure><img className="p-5 w-full " src={image}  /></figure>
             <div className="card-body">
                 <h2 className="card-title text-3xl font-semibold"> Name: {productName}              
                     <div className="badge badge-secondary text-xl py-3 font-semibold ">New</div>

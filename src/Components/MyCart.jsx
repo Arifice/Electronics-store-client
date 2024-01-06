@@ -1,13 +1,17 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 
 
+
 const MyCart = () => {
+    
     const loadedCarts = useLoaderData();
     const [carts, setCarts] = useState(loadedCarts); 
-    const [code,setCode]=useState(null);   
+    const [code,setCode]=useState(null);  
+    
+    
     console.log(code);
     
     const handleDeleteCart=id=>{
@@ -102,11 +106,12 @@ const MyCart = () => {
                <img className="w-96 h-96" src="https://i.postimg.cc/MTK4TSTv/imageedit-2-6578762515.png" alt="" />
             </div>
             </div>
-            <div className="p-8 ">
-                <table className="table">
+            
+            <div className="p-8 overflow-x-auto">
+                <table className="table ">
                     <caption className="text-5xl font-bold text-black">Cart Information</caption>
                     {/* head */}
-                    <thead className="text-3xl font-bold text-center text-black">
+                    <thead className="lg:text-3xl  font-bold text-center text-black">
                         <tr className="border-2 border-black">
                             <th className="border-2 border-black">SL</th>
                             <th className="border-2 border-black">Image</th>
@@ -121,13 +126,13 @@ const MyCart = () => {
                         carts.map((cart, idx) => (
                             <tbody key={idx}>
                                 <tr className=" text-center text-black border-2 border-black">
-                                    <th className="border-2 text-2xl font-semibold  border-black">{idx + 1}</th>
-                                    <td className="border-2 text-2xl font-semibold border-black"><img className="w-20 h-20" src={cart?.image} alt="" /></td>
-                                    <td className="border-2 text-2xl font-semibold border-black">{cart?.productName}</td>
-                                    <td className="border-2 text-2xl font-semibold border-black">{cart?.brandName}</td>
-                                    <td className="border-2 text-2xl font-semibold border-black">{cart?.type}</td>
-                                    <td className="border-2 text-2xl font-semibold border-black">{cart?.price}</td>
-                                    <td className="border-2 text-2xl font-semibold border-black"><button onClick={()=>handleDeleteCart(cart._id)} className="bg-[#FAEF5D] btn btn-ghost btn-outline">X</button></td>
+                                    <th className="border-2 lg:text-2xl font-semibold  border-black">{idx + 1}</th>
+                                    <td className="border-2 lg:text-2xl font-semibold border-black"><img className="w-20 h-20" src={cart?.image} alt="" /></td>
+                                    <td className="border-2 lg:text-2xl font-semibold border-black">{cart?.productName}</td>
+                                    <td className="border-2 lg:text-2xl font-semibold border-black">{cart?.brandName}</td>
+                                    <td className="border-2 lg:text-2xl font-semibold border-black">{cart?.type}</td>
+                                    <td className="border-2 lg:text-2xl font-semibold border-black">{cart?.price}</td>
+                                    <td className="border-2 lg:text-2xl font-semibold border-black"><button onClick={()=>handleDeleteCart(cart._id)} className="bg-[#FAEF5D] btn btn-ghost btn-outline">X</button></td>
                                 </tr>
                             </tbody>                                                       
                         ))
@@ -135,19 +140,20 @@ const MyCart = () => {
 
                 </table>                               
             </div>
-            <div className="border border-black m-10 p-10">
+            <div className="border border-black m-2 p-2 lg:m-10 lg:p-10">
                 <h1 className="text-5xl text-center font-semibold underline my-12">Payment section</h1> 
-                <h1 className="text-3xl text-right font-semibold my-12">FOR <span className="text-[#E527B2]">20% DISCOUNT</span> USE PROMO CODE: <span className="bg-[#549420] p-2 rounded-lg text-white">2024</span></h1> 
+                
+                <h1 className="lg:text-3xl text-xl text-right font-semibold my-12">FOR <span className="text-[#E527B2]">20% DISCOUNT</span> USE PROMO CODE: <span className="bg-[#549420] p-1 rounded-lg text-white">2024</span></h1> 
                 <form onSubmit={handleApply} className={`${totalPrice>200000?'visible':'hidden'} flex justify-end items-center my-2`}>
                     <input type="text" name="promoCode" className="p-4 border border-black text-3xl" placeholder="promo code" />
                     <input type="submit" value={'Apply'} className=" text-3xl font-semibold text-white bg-secondary rounded-r-lg p-4" />
                 </form>
                 {
                     carts.map((cart,idx)=>(
-                        <div key={idx} className="text-4xl space-y-2 font-semibold text-black ">
-                            <div className="flex justify-between pl-10 items-center">
+                        <div key={idx} className="lg:text-4xl  space-y-2 lg:font-semibold text-black ">
+                            <div className="flex justify-between lg:pl-10 items-center">
                                 <div>
-                                    <p><span >{idx+1}. {cart.productName} , {cart.type}, {cart.brandName} Brand  </span>  </p>
+                                    <p><span >{idx+1}. {cart.productName}, {cart.brandName}  </span>  </p>
                                 </div>
                                 <div>
                                     <span >price = {cart.price} Tk</span>
@@ -157,12 +163,12 @@ const MyCart = () => {
                     ))
                 } 
                 <hr className="border  border-black my-3" />
-                <p className="text-4xl font-semibold text-black my-3 text-right">Total price = {totalPrice} Tk</p>
-                <p className={`${code==='2024'?'visible':'hidden'} text-4xl font-semibold text-black my-3 text-right`}>Discount = {discount} Tk</p>
+                <p className="lg:text-4xl font-semibold text-black my-3 text-right">Total price = {totalPrice} Tk</p>
+                <p className={`${code==='2024'&& totalPrice>200000?'visible':'hidden'} lg:text-4xl font-semibold text-black my-3 text-right`}>Discount = {discount} Tk</p>
                 <hr className="border border-black my-3" />
-                <p className="text-4xl font-semibold text-black my-3 text-right">Total  = {finalPrice} Tk</p>   
+                <p className="lg:text-4xl font-semibold text-black my-3 text-right">Total  = {finalPrice} Tk</p>   
                 <div className="flex justify-end my-4">
-                    <Link to={'/'}><button onClick={handleMakePurchase} className="btn btn-secondary   text-3xl"><BiSolidPurchaseTagAlt></BiSolidPurchaseTagAlt> Make purcase</button>    </Link>  
+                    <Link to={'/'}><button onClick={handleMakePurchase} className="btn btn-secondary   lg:text-3xl"><BiSolidPurchaseTagAlt></BiSolidPurchaseTagAlt> Make purcase</button>    </Link>  
                 </div>
                 
             </div>

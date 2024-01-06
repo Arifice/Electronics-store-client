@@ -34,19 +34,19 @@ const DetailsProduct = () => {
     
     return (
        <div className="flex justify-center my-24">
-            <div className="card  bg-base-100 border-2 border-teal-500  shadow-xl">
-                <figure><img className="p-5 w-1/2  " src={image}  /></figure>
+            <div className="card   border-2   shadow-xl">
+                <figure><img className="p-5 w-full  " src={image}  /></figure>
                 <div className="card-body">
-                    <h2 className="card-title m-4 text-5xl font-bold"> Name: {productName}              
-                        <div className="badge badge-secondary text-3xl p-5 font-semibold ">New</div>
+                    <h2 className="card-title m-4 text-2xl lg:text-5xl font-bold"> Name: {productName}              
+                        <div className="badge badge-secondary text-xl lg:text-3xl p-5 font-semibold ">New</div>
                     </h2>
                     <div className=" flex  justify-between">                    
-                        <p className="bg-[#FF9800] text-center text-3xl p-5 mr-2 text-white rounded-lg font-semibold">Brand : {brandName}</p>
-                        <p className="bg-[#186F65] text-center text-3xl p-5 ml-2 text-white rounded-lg font-semibold">Price : {price} Tk</p>
+                        <p className="bg-[#FF9800] text-center  lg:text-3xl p-2 lg:p-5 mr-2 text-white rounded-lg font-semibold">Brand : {brandName}</p>
+                        <p className="bg-[#186F65] text-center lg:text-3xl p-2 lg:p-5 ml-2 text-white rounded-lg font-semibold">Price : {price} Tk</p>
                         
                     </div>
                     <div className="flex justify-between">
-                        <p className="bg-[#860A35] text-center p-5  text-3xl text-white rounded-md font-semibold">Category: {type}</p>
+                        <p className="bg-[#860A35] text-center p-1 lg:p-5 text-xl lg:text-3xl text-white rounded-md font-semibold">Category: {type}</p>
                     </div>
                     <div className="rating flex justify-center rating-lg m-5 ">
                         <div className="rating gap-1">
@@ -59,10 +59,10 @@ const DetailsProduct = () => {
                             <input type="radio" name={_id} className="mask mask-heart bg-teal-400" />
                         </div>
                     </div>
-                    <p className="text-justify text-3xl bg-[#756AB6] rounded-lg text-white p-5">{description}</p>
+                    <p className="text-justify  lg:text-3xl bg-[#756AB6] rounded-lg text-white p-5">{description}</p>
                     <div className="flex justify-center">
-                    <button onClick={handleAddToCart} className="btn btn-success m-5  btn-outline text-4xl "><FaCartPlus></FaCartPlus>Add to Cart</button> 
-                    <button onClick={handleGoback} className="btn btn-ghost m-5  btn-outline text-4xl "><IoArrowBackCircle></IoArrowBackCircle>Go Back</button> 
+                    <button onClick={handleAddToCart} className="btn btn-success m-5  btn-outline lg:text-4xl "><FaCartPlus></FaCartPlus>Add to Cart</button> 
+                    <button onClick={handleGoback} className="btn btn-ghost m-5  btn-outline lg:text-4xl "><IoArrowBackCircle></IoArrowBackCircle>Go Back</button> 
                     
                     
                     </div>
