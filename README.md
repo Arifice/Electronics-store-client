@@ -10,5 +10,6 @@
 
 # Git hub Link : https://github.com/programming-hero-web-course-4/b8a10-brandshop-client-side-Arifice.git
 
-# Live link on Firebase : https://e-tech-shop-fd817.web.app
+# Live link on Firebase client side : https://e-tech-shop-fd817.web.app
   
+# live link on vercel server side : b8a10-brandshop-server-side-arifice-qyfc.vercel.app
