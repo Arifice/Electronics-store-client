@@ -19,7 +19,7 @@ const UpdateProduct = () => {
         console.log(updatedProduct);
 
         // send product to the server.
-        fetch(`http://localhost:5000/product/${_id }`,{
+        fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product/${_id }`,{
             method: 'PUT',
             headers: {
                 'content-type':'application/json'

@@ -72,7 +72,7 @@ const Register = () => {
                 const newUser={name,photo,email,password,gendar,createAt,lastSignAt,emailVerify}
 
                 // send user to the server
-                fetch('http://localhost:5000/user',{
+                fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user',{
                     method:'POST',
                     headers:{
                         'content-type':'application/json'

@@ -22,7 +22,7 @@ const User = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/user/${id}`,{
+                fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user/${id}`,{
                     method:'DELETE'
                 })
                 .then(res=>res.json())

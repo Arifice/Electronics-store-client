@@ -16,7 +16,7 @@ const UpdateUser = () => {
         const updateUser={name,photo,email,password};
         console.log(updateUser);        
         form.reset();
-        fetch(`http://localhost:5000/user/${_id}`,{
+        fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'

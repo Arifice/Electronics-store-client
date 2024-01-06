@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<Home></Home>,
-        loader:()=>fetch('http://localhost:5000/product')
+        loader:()=>fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product')
       },
       {
         path:'/addproduct',
@@ -48,32 +48,32 @@ const router = createBrowserRouter([
       {
         path:'/product',
         element:<PrivateRoute><Product></Product></PrivateRoute>,
-        loader:()=>fetch('http://localhost:5000/product')
+        loader:()=>fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product')
       },
       {
         path:'/mycart',
         element:<PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader:()=>fetch('http://localhost:5000/cart')        
+        loader:()=>fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart')        
       },
       {
         path: '/user',
         element:<PrivateRoute><User></User></PrivateRoute>,
-        loader:()=>fetch('http://localhost:5000/user')
+        loader:()=>fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user')
       },
       {
         path:'/updateProduct/:id',
         element:<UpdateProduct></UpdateProduct>,
-        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`)
+        loader:({params})=>fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product/${params.id}`)
       },
       {
         path:'/product/:id',
         element:<PrivateRoute><DetailsProduct></DetailsProduct></PrivateRoute>,
-        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`)
+        loader:({params})=>fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product/${params.id}`)
       },
       {
         path:'/updateUser/:id',
         element:<UpdateUser></UpdateUser>,
-        loader:({params})=>fetch(`http://localhost:5000/user/${params.id}`)
+        loader:({params})=>fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user/${params.id}`)
       }
       
     ]

@@ -15,7 +15,7 @@ const Addproduct = () => {
         console.log(newProduct);
 
         // send product to the server.
-        fetch('http://localhost:5000/product',{
+        fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product',{
             method: 'POST',
             headers: {
                 'content-type':'application/json'

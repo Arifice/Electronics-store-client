@@ -47,7 +47,7 @@ const Login = () => {
             const emailVerify=result?.user?.emailVerified;
             const updateUser={email,createdAt,lastSignAt,emailVerify};
             // update in the database
-            fetch('http://localhost:5000/user',{
+            fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user',{
                 method: 'PATCH',
                 headers:{
                     'content-type':'application/json'

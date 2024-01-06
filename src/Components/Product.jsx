@@ -11,7 +11,7 @@ const Product = () => {
     console.log('product carts',carts);
 
     useEffect(()=>{
-        fetch('http://localhost:5000/cart')
+        fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart')
         .then(result=>result.json())
         .then(data=>{
             setCarts(data);
@@ -31,7 +31,7 @@ const Product = () => {
               return;
         }     
         else{
-            fetch('http://localhost:5000/cart',{
+            fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
@@ -65,7 +65,7 @@ const Product = () => {
           }).then((result) => {
             if (result.isConfirmed) {
               
-              fetch(`http://localhost:5000/product/${_id}`,{
+              fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product/${_id}`,{
                 method:'DELETE'                
               })
               .then(res=>res.json())

@@ -26,7 +26,7 @@ const MyCart = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/cart/${id}`, {
+                fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart/${id}`, {
                     method: 'DELETE'
                 })
                 .then(res=>res.json())
@@ -76,7 +76,7 @@ const MyCart = () => {
         }
     }
     const handleMakePurchase=()=>{ 
-        fetch('http://localhost:5000/cart',{
+        fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart',{
             method: 'DELETE'
         })
         .then(res=>res.json())
