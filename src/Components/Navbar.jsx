@@ -32,7 +32,7 @@ const Navbar = () => {
             <li className="text-2xl font-semibold"> <NavLink to={'/user'}>User</NavLink></li>
         </>
     return (
-        <div className="navbar bg-[#1B9C85] shadow-2xl text-white">
+        <div className="navbar px-2 bg-[#1B9C85] shadow-2xl text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost  lg:hidden">

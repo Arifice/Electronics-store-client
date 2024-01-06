@@ -40,9 +40,9 @@ const UpdateProduct = () => {
             })
         }
     return (
-        <div className="flex  flex-col items-center justify-center bg-[#F9F6E2]">
+        <div className="flex m-4 p-4 flex-col items-center justify-center bg-[#F9F6E2]">
                 <div className="text-center">
-                    <h1 className="text-5xl mt-12 font-bold bg-black text-white p-5 px-10 shadow-2xl rounded-lg">   Update Product !</h1>  
+                    <h1 className="lg:text-5xl text-3xl mt-12 font-bold bg-black text-white p-5 px-10 shadow-2xl rounded-lg">   Update Product !</h1>  
                     <figure className="flex justify-center"><img src={image} className=" w-1/2 h-1/2 p-3" alt="" /></figure>              
                 </div>
                 <div className="lg:w-1/2  text-3xl">

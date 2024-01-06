@@ -1,50 +1,52 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaCartPlus } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import DiscountOffer from "./DiscountOffer";
 
 const Product = () => {
     const loadedProducts=useLoaderData(); 
     const [products,setProducts]=useState(loadedProducts);
+
     console.log('load products',products);
 
-    const [carts, setCarts]=useState([]);
-    console.log('fectch cart',carts);
+    const [dbCart,setDbCart]=useState([]);
 
-    useEffect(()=>{
-        fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart')
-        .then(result=>result.json())
-        .then(data=>{
-            setCarts(data);
-        })
-    },[])
+   useEffect(()=>{
+        fetch("https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart")
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data);
+                setDbCart(data);
+            })
+   },[])
+    console.log('dbcart',dbCart);
+   
 
     const handleAddtoCart=(id)=>{
         const findProduct=products.filter(product=>product._id===id);
-        // const {brandName} =findProduct;       
-        console.log('find product',findProduct);  
         
-        const cart=carts.filter(cart=>cart._id===id);
-
-        console.log('cart',cart);
-        console.log('id',findProduct._id,cart._id);
+        const {_id,brandName,image,productName,price,description}=findProduct[0];  
+        const cartProduct={_id,brandName,image,productName,price,description};           
+        console.log('find product',findProduct);          
+        console.log('cart product',cartProduct);  
         
-        if(findProduct._id===cart._id){
+        const selectcart=dbCart.filter(cart=>cart._id==id);
+        console.log('select cart',selectcart);
+        if(selectcart.length>0){
             Swal.fire({
-                title: "warning",
-                text: "You have already added this product",
-                icon: "warning"
+                title: "woarning",
+                text: "Your have already added to the cart.",
+                icon: "worning"
               });
               return;
-        }     
-        else{
-            fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart',{
+        }
+        fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
             },
-            body:JSON.stringify(findProduct)
+            body:JSON.stringify(cartProduct)
         })
         .then(res=>res.json())
         .then(data=>{
@@ -57,9 +59,10 @@ const Product = () => {
                   });
             }
         })
-        }
-    }
-    
+        }         
+        
+           
+      
     const handleDelete=_id=>{
         console.log(_id);
         Swal.fire({

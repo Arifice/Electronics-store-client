@@ -135,10 +135,10 @@ const Login = () => {
     }
     
     return (
-            <div className="flex flex-col-reverse lg:flex-row bg-[#F9F6E2] ">
-                <div className="flex lg:w-3/4  py-12  bg-[#F9F6E2] my-12 flex-col items-center justify-center">
+            <div className="flex m-4 p-4 flex-col-reverse lg:flex-row bg-[#F9F6E2] ">
+                <div className="flex m-4 p-5 lg:w-3/4  py-12  bg-[#F9F6E2] my-12 flex-col items-center justify-center">
                     <div className="text-center">
-                        <h1 className="text-5xl bg-[#178de7] text-white p-6 rounded-lg font-bold">Login Now!</h1>                
+                        <h1 className="lg:text-5xl text-3xl bg-[#178de7] text-white p-6 rounded-lg font-bold">Login Now!</h1>                
                     </div>
                     <div className="lg:w-1/2  text-3xl ">
                         <form onSubmit={handleLogin} className="card-body ">                        
@@ -166,7 +166,7 @@ const Login = () => {
                 </div>
 
                 <div className="text-center lg:w-1/4 bg-[#F9F6E2] my-12  text-4xl">
-                    <h1 className="text-4xl font-bold text-center my-12 bg-[#0f4f80] text-white p-6 rounded-lg ">Login with !!</h1>
+                    <h1 className="text-4xl font-bold text-center my-12 bg-[#0f4f80] text-white m-6 p-6 rounded-lg ">Login with !!</h1>
                     <div className="flex flex-col gap-5 justify-center items-center">
                         <button onClick={handleGoogle} className="btn btn-secondary  text-3xl w-2/3"><FaGooglePlusSquare></FaGooglePlusSquare>Google</button> 
                         <button onClick={handlegithub} className="btn btn-success  text-3xl w-2/3"><FaGithub></FaGithub>Git-hub</button> 

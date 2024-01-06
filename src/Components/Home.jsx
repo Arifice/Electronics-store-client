@@ -1,8 +1,9 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import DiscountOffer from "./DiscountOffer";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import { FaCartPlus } from "react-icons/fa";
 
 const Home = () => {
     const loadedProducts=useLoaderData();
@@ -11,7 +12,58 @@ const Home = () => {
     const[products,setProducts]=useState(loadedProducts);
     const navigate=useNavigate();
     
-      const handleDelete = _id =>{
+    const [dbCart,setDbCart]=useState([]);
+
+    useEffect(()=>{
+          fetch("https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart")
+              .then(res=>res.json())
+              .then(data=>{
+                  console.log(data);
+                  setDbCart(data);
+              })
+    },[])
+    console.log('dbcart',dbCart);
+    const handleAddtoCart=(id)=>{
+      const findProduct=products.filter(product=>product._id===id);
+      
+      const {_id,brandName,image,productName,price,description}=findProduct[0];  
+      const cartProduct={_id,brandName,image,productName,price,description};           
+      console.log('find product',findProduct);          
+      console.log('cart product',cartProduct);  
+      
+      const selectcart=dbCart.filter(cart=>cart._id==id);
+      console.log('select cart',selectcart);
+      if(selectcart.length>0){
+          Swal.fire({
+              title: "woarning",
+              text: "Your have already added to the cart.",
+              icon: "worning"
+            });
+            return;
+      }
+      fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart',{
+          method:'POST',
+          headers:{
+              'content-type':'application/json'
+          },
+          body:JSON.stringify(cartProduct)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+          console.log(data);
+          if(data.insertedId){                
+              Swal.fire({
+                  title: "Success",
+                  text: "Your product successfully added to the cart.",
+                  icon: "success"
+                });
+          }
+      })
+      }         
+
+
+
+    const handleDelete = _id =>{
         if(!user){
             navigate('/login');
             return;
@@ -62,6 +114,7 @@ const Home = () => {
                         <div className="card-body">
                             <h2 className="card-title text-3xl font-bold"> Name: {product?.productName}              
                                 <div className="badge badge-secondary text-xl py-3 font-semibold ">New</div>
+                                <div onClick={()=>handleAddtoCart(product._id)} className="btn btn-ghost text-2xl btn-outline font-semibold "><FaCartPlus></FaCartPlus></div>
                             </h2>
                             <div className="my-1 text-3xl font-semibold">                    
                                 <p className="  ">Brand : {product?.brandName}</p>

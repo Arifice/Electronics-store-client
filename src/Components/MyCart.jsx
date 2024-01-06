@@ -144,13 +144,13 @@ const MyCart = () => {
                 <h1 className="text-5xl text-center font-semibold underline my-12">Payment section</h1> 
                 
                 <h1 className="lg:text-3xl text-xl text-right font-semibold my-12">FOR <span className="text-[#E527B2]">20% DISCOUNT</span> USE PROMO CODE: <span className="bg-[#549420] p-1 rounded-lg text-white">2024</span></h1> 
-                <form onSubmit={handleApply} className={`${totalPrice>200000?'visible':'hidden'} flex justify-end items-center my-2`}>
-                    <input type="text" name="promoCode" className="p-4 border border-black text-3xl" placeholder="promo code" />
-                    <input type="submit" value={'Apply'} className=" text-3xl font-semibold text-white bg-secondary rounded-r-lg p-4" />
+                <form onSubmit={handleApply} className={`${totalPrice>200000?'visible':'hidden'} flex justify-end items-center m-4 p-4 my-2`}>
+                    <input type="text" name="promoCode" className="lg:p-4 p-3 border border-black lg:text-3xl" placeholder="promo code" />
+                    <input type="submit" value={'Apply'} className=" lg:text-3xl text-xl font-semibold text-white bg-secondary rounded-r-lg p-4" />
                 </form>
                 {
                     carts.map((cart,idx)=>(
-                        <div key={idx} className="lg:text-4xl  space-y-2 lg:font-semibold text-black ">
+                        <div key={idx} className="lg:text-4xl   space-y-2 lg:font-semibold text-black ">
                             <div className="flex justify-between lg:pl-10 items-center">
                                 <div>
                                     <p><span >{idx+1}. {cart.productName}, {cart.brandName}  </span>  </p>
