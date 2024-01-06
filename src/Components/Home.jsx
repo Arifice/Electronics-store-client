@@ -110,7 +110,7 @@ const Home = () => {
                 {
                     products.map(product=> (
                         <div key={product._id} className="card  bg-white border-2 border-teal-500  shadow-xl">
-                        <figure><img className="p-5 w-full " src={product?.image}  /></figure>
+                        <figure><img className="p-5 w-full h-64" src={product?.image}  /></figure>
                         <div className="card-body">
                             <h2 className="card-title text-3xl font-bold"> Name: {product?.productName}              
                                 <div className="badge badge-secondary text-xl py-3 font-semibold ">New</div>

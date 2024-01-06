@@ -2,6 +2,7 @@ import {  useLoaderData, useNavigate } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
 import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
 
 const DetailsProduct = () => {
     const product=useLoaderData();
@@ -11,7 +12,30 @@ const DetailsProduct = () => {
     const handleGoback=()=>{
         navigate(-1);
     }
-    const handleAddToCart=()=>{
+    const [dbCart,setDbCart]=useState([]);
+
+    useEffect(()=>{
+          fetch("https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart")
+              .then(res=>res.json())
+              .then(data=>{
+                  console.log(data);
+                  setDbCart(data);
+              })
+    },[])
+
+
+    const handleAddToCart=(id)=>{
+        const selectcart=dbCart.filter(cart=>cart._id==id);
+        console.log('select cart',selectcart);
+        if(selectcart.length>0){
+            Swal.fire({
+                title: "woarning",
+                text: "Your have already added to the cart.",
+                icon: "worning"
+                });
+                return;
+        }
+
         fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart',{
             method:'POST',
             headers:{
@@ -61,7 +85,7 @@ const DetailsProduct = () => {
                     </div>
                     <p className="text-justify  lg:text-3xl bg-[#756AB6] rounded-lg text-white p-5">{description}</p>
                     <div className="flex justify-center">
-                    <button onClick={handleAddToCart} className="btn btn-success m-5  btn-outline lg:text-4xl "><FaCartPlus></FaCartPlus>Add to Cart</button> 
+                    <button onClick={()=>handleAddToCart(_id)} className="btn btn-success m-5  btn-outline lg:text-4xl "><FaCartPlus></FaCartPlus>Add to Cart</button> 
                     <button onClick={handleGoback} className="btn btn-ghost m-5  btn-outline lg:text-4xl "><IoArrowBackCircle></IoArrowBackCircle>Go Back</button> 
                     
                     

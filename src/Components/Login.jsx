@@ -140,25 +140,25 @@ const Login = () => {
                     <div className="text-center">
                         <h1 className="lg:text-5xl text-3xl bg-[#178de7] text-white p-6 rounded-lg font-bold">Login Now!</h1>                
                     </div>
-                    <div className="lg:w-1/2  text-3xl ">
+                    <div className="lg:w-1/2 p-4 m-4 text-xl lg:text-3xl ">
                         <form onSubmit={handleLogin} className="card-body ">                        
                             <div className="form-control">
                             <label className="label">
                                 <span className="label-text  text-3xl">Email</span>
                             </label>
-                            <input type="email" name="email" ref={emailRef} placeholder="email" className="input text-3xl md:p-8 lg:p-8 input-bordered" required />
+                            <input type="email" name="email" ref={emailRef} placeholder="email" className="input lg:text-3xl text-xl p-4 lg:p-8 input-bordered" required />
                             </div>
                             <div className="form-control">
                             <label className="label">
                                 <span className="label-text  text-3xl">Password</span>
                             </label>
-                            <input type="password" name="password"  placeholder="password" className="input text-3xl md:p-8 lg:p-8 input-bordered" required />                        
+                            <input type="password" name="password"  placeholder="password" className="input lg:text-3xl text-xl p-4 lg:p-8 input-bordered" required />                        
                             <label className="label">
                                 <a onClick={handleForgetPassword} href="#" className="label-text-alt  link text-2xl link-hover">Forgot password?</a>
                             </label>
                             </div>
                             <div className="form-control mt-6">
-                            <input type="submit" value={'Login'} className="btn btn-secondary  text-3xl"/>
+                            <input type="submit" value={'Login'} className="btn btn-secondary btn-outline text-xl lg:text-3xl"/>
                             </div>
                         </form>
                         <h1 className="text-3xl text-center mb-8">Do not have Registered? Please<Link to={'/register'} className="text-red-600 font-bold underline ml-3">Register</Link> </h1>
@@ -166,7 +166,7 @@ const Login = () => {
                 </div>
 
                 <div className="text-center lg:w-1/4 bg-[#F9F6E2] my-12  text-4xl">
-                    <h1 className="text-4xl font-bold text-center my-12 bg-[#0f4f80] text-white m-6 p-6 rounded-lg ">Login with !!</h1>
+                    <h1 className="lg:text-4xl text-2xl font-bold text-center my-12 bg-[#0f4f80] text-white m-6 p-6 rounded-lg ">Login with !!</h1>
                     <div className="flex flex-col gap-5 justify-center items-center">
                         <button onClick={handleGoogle} className="btn btn-secondary  text-3xl w-2/3"><FaGooglePlusSquare></FaGooglePlusSquare>Google</button> 
                         <button onClick={handlegithub} className="btn btn-success  text-3xl w-2/3"><FaGithub></FaGithub>Git-hub</button> 

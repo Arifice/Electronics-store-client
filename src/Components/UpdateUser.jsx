@@ -1,9 +1,11 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const UpdateUser = () => {
     const user=useLoaderData();
+    const navigate=useNavigate();
+    const location=useLocation();
     const {_id,name,photo,email,password}=user;
     console.log(user);
     const handleUpdate=e=>{
@@ -30,9 +32,17 @@ const UpdateUser = () => {
                 Swal.fire({
                     icon: "success",
                     title: "Success",
-                    text: "Product is successfully Updated",        
+                    text: "User is successfully Updated",        
                 })
-               
+               navigate(location?.state ? location?.state :'/');
+            }
+            else{
+                Swal.fire({
+                    icon: "worning",
+                    title: "worning",
+                    text: "You do not change anything",        
+                })
+               navigate(location?.state ? location?.state :'/');
             }
             
         })
@@ -74,7 +84,7 @@ const UpdateUser = () => {
                        
                         </div>
                         <div className="form-control mt-6">
-                        <input type="submit" value={'Update'} className="btn text-3xl btn-secondary "/>
+                        <input type="submit" value={'Update'} className="btn text-3xl btn-outline btn-secondary "/>
                         </div>
                     </form>
                     

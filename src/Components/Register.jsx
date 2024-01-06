@@ -100,33 +100,33 @@ const Register = () => {
                 <div className="text-center">
                     <h1 className="lg:text-5xl text-3xl mt-12 font-bold bg-black text-white p-4 rounded-lg">Register Now!</h1>                
                 </div>
-                <div className="lg:w-1/2 p-4 m-4 text-3xl">
+                <div className="lg:w-1/2 p-4 m-4 text-xl lg:text-3xl">
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-3xl">Name</span>
+                            <span className="label-text text-xl lg:text-3xl">Name</span>
                         </label>
-                        <input type="text" name="name" placeholder="Name" className="input text-3xl md:p-8 lg:p-8 input-bordered"/>
+                        <input type="text" name="name" placeholder="Name" className="input text-xl lg:text-3xl  md:p-8 lg:p-8 input-bordered"/>
                         </div>
                         <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-3xl">Photo</span>
+                            <span className="label-text text-xl lg:text-3xl">Photo</span>
                         </label>
-                        <input type="text" name="photo" placeholder="photo url" className="input text-3xl md:p-8 lg:p-8 input-bordered"/>
+                        <input type="text" name="photo" placeholder="photo url" className="input text-xl lg:text-3xl md:p-8 lg:p-8 input-bordered"/>
                         </div>                       
 
                         <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-3xl">Email</span>
+                            <span className="label-text text-xl lg:text-3xl">Email</span>
                         </label>
-                        <input type="email" name="email" placeholder="email" className="input text-3xl md:p-8 lg:p-8 input-bordered" required />
+                        <input type="email" name="email" placeholder="email" className="input text-xl lg:text-3xl md:p-8 lg:p-8 input-bordered" required />
                         </div>
                         <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-3xl">Password</span>
+                            <span className="label-text text-xl lg:text-3xl">Password</span>
                         </label>
-                        <input type={showPassword?'text':'password'} name="password" placeholder="password" className="input relative text-3xl md:p-8 lg:p-8 input-bordered" required />                        
-                            <button className="absolute   text-4xl my-16 ml-72" onClick={()=>setShowPassword(!showPassword)}>{showPassword?<FaEyeSlash></FaEyeSlash>:<FaEye></FaEye>}</button>
+                        <input type={showPassword?'text':'password'} name="password" placeholder="password" className="input relative text-xl lg:text-3xl md:p-8 lg:p-8 input-bordered" required />                        
+                            <button className="absolute text-xl  lg:text-4xl ml-52 my-16 lg:ml-72" onClick={()=>setShowPassword(!showPassword)}>{showPassword?<FaEyeSlash></FaEyeSlash>:<FaEye></FaEye>}</button>
                         </div>
                         <div className="lg:text-2xl text-xl my-2">
                             <input type="checkbox" className="w-6 h-6" name="terms" id="terms" required />
@@ -136,7 +136,7 @@ const Register = () => {
                         
 
                         <div className="form-control mt-6">
-                        <input type="submit" value={'Register'} className="btn text-3xl btn-secondary "/>
+                        <input type="submit" value={'Register'} className="btn text-xl lg:text-3xl btn-secondary "/>
                         </div>
                     </form>
                     <h1 className="text-3xl text-center mb-8">Already have Registered? Please<Link to={'/login'} className="text-red-600 underline font-bold ml-3">Login</Link> </h1>
@@ -145,8 +145,8 @@ const Register = () => {
                 {/* <button className="btn" onClick={()=>document.getElementById('my_modal_5').showModal()}>open modal</button> */}
                 <dialog id="my_modal_5" className={`${registerError?document.getElementById('my_modal_5').showModal():'hidden'} modal modal-bottom sm:modal-middle`}>
                     <div className="modal-box">
-                        <h3 className="font-bold text-5xl">Hello!</h3>
-                        <p className="py-4 text-3xl font-semibold">{registerError}</p>
+                        <h3 className="font-bold text-3xl lg:text-5xl">Hello!</h3>
+                        <p className="py-4 text-xl lg:text-3xl font-semibold">{registerError}</p>
                         <div className="modal-action">
                         <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}

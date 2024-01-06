@@ -76,6 +76,15 @@ const MyCart = () => {
         }
     }
     const handleMakePurchase=()=>{ 
+        console.log(parseFloat(totalPrice),'make');
+        if(parseFloat(totalPrice) <= 0){
+            Swal.fire({
+                title: "warning",
+                text: "Please add product to yuor cart",
+                icon: "warning"
+              });
+              return;
+        }
         fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/cart',{
             method: 'DELETE'
         })
