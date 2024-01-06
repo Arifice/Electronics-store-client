@@ -1,8 +1,14 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Title : Brand Shop
+# E-Tech-shop
+#
+# Features of this Project
+- it is a e-tech shop management project where a user can register, login, Add, buy , update, product.
+- I use html, css, tailwind css, daisy Ui, react, node js,Express js, MongoDB ,firebase authenticatioin and more ....
+- It is a server connected  project
+- this project is uploaded on github
 
-Currently, two official plugins are available:
+# Git hub Link : https://github.com/programming-hero-web-course-4/b8a10-brandshop-client-side-Arifice.git
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Live link on Firebase : https://e-tech-shop-fd817.web.app
+  
