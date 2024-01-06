@@ -12,4 +12,4 @@
 
 # Live link on Firebase client side : https://e-tech-shop-fd817.web.app
   
-# live link on vercel server side : b8a10-brandshop-server-side-arifice-qyfc.vercel.app
+# live link on vercel server side : https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app
