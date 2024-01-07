@@ -1,11 +1,11 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate,  } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateProduct = () => {
-    const product=useLoaderData();
+    const product=useLoaderData();    
     const {productName,image,brandName,type,price,description,_id}=product;
     console.log(product);
-    const navigate=useNavigate();
+   const navigate=useNavigate();
 
     const handleUpdateProduct=e=>{
         e.preventDefault();
@@ -37,7 +37,7 @@ const UpdateProduct = () => {
                         title: "Success",
                         text: "Product is successfully Updated",        
                     })
-                    navigate('/');
+                   navigate('/');
                 }
                 else{
                     Swal.fire({
@@ -45,7 +45,7 @@ const UpdateProduct = () => {
                         title: "warning",
                         text: "You do not change anything",        
                     })
-                   navigate(location?.state ? location?.state :'/');
+                //   navigate('/');
                 }
                 
             })

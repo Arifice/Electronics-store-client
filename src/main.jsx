@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from './App';
-import Home from './Components/Home';
+
 import Addproduct from './Components/Addproduct';
 import Login from './Components/Login';
 import Register from './Components/Register';
@@ -19,6 +19,13 @@ import DetailsProduct from './Components/DetailsProduct';
 import Product from './Components/Product';
 import UpdateUser from './Components/UpdateUser';
 import PrivateRoute from './Components/PrivateRoute';
+import ErrorPage from './Components/ErrorPage';
+import Home from './Components/Home';
+import ProductCategory from './Components/ProductCategory';
+
+
+
+
 
 
 
@@ -26,11 +33,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element:<App></App>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path:'/',
         element:<Home></Home>,
-        loader:()=>fetch('https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product')
+        loader:()=>fetch('brand.json')        
       },
       {
         path:'/addproduct',
@@ -74,10 +82,15 @@ const router = createBrowserRouter([
         path:'/updateUser/:id',
         element:<UpdateUser></UpdateUser>,
         loader:({params})=>fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user/${params.id}`)
-      }
+      }, 
+      {
+        path:'/category/:id',
+        element:<ProductCategory></ProductCategory>        
+      } 
       
     ]
-  },
+    
+  },  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

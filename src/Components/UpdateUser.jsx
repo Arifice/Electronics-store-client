@@ -1,11 +1,11 @@
-import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { useLoaderData,  } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const UpdateUser = () => {
     const user=useLoaderData();
-    const navigate=useNavigate();
-    const location=useLocation();
+    // const navigate=useNavigate();
+    // const location=useLocation();
     const {_id,name,photo,email,password}=user;
     console.log(user);
     const handleUpdate=e=>{
@@ -34,7 +34,7 @@ const UpdateUser = () => {
                     title: "Success",
                     text: "User is successfully Updated",        
                 })
-               navigate(location?.state ? location?.state :'/');
+            //    navigate(location?.state ? location?.state :'/');
             }
             else{
                 Swal.fire({
@@ -42,7 +42,7 @@ const UpdateUser = () => {
                     title: "warning",
                     text: "You do not change anything",        
                 })
-               navigate(location?.state ? location?.state :'/');
+            //    navigate(location?.state ? location?.state :'/');
             }
             
         })

@@ -154,7 +154,7 @@ const MyCart = () => {
                 
                 <h1 className="lg:text-3xl text-xl text-right font-semibold my-12">FOR <span className="text-[#E527B2]">20% DISCOUNT</span> USE PROMO CODE: <span className="bg-[#549420] p-1 rounded-lg text-white">2024</span></h1> 
                 <form onSubmit={handleApply} className={`${totalPrice>200000?'visible':'hidden'} flex justify-end items-center m-4  lg:p-4 my-2`}>
-                    <input type="text" name="promoCode" className="lg:p-4 w-32 p-3 ml-8 text-xl border border-black lg:text-3xl" placeholder="promo code" />
+                    <input type="text" name="promoCode" className="lg:p-4 lg:w-52 w-32 p-3 ml-8 text-xl border border-black lg:text-3xl" placeholder="promo code" />
                     <input type="submit" value={'Apply'} className=" lg:text-3xl text-xl font-semibold text-white bg-secondary rounded-r-lg p-3" />
                 </form>
                 {

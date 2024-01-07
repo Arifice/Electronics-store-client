@@ -29,9 +29,9 @@ const DetailsProduct = () => {
         console.log('select cart',selectcart);
         if(selectcart.length>0){
             Swal.fire({
-                title: "woarning",
+                title: "warning",
                 text: "Your have already added to the cart.",
-                icon: "worning"
+                icon: "warning"
                 });
                 return;
         }
