@@ -9,8 +9,8 @@ const Home = () => {
         
         <div>
 
-            <div className="m-4 p-4">
-                <div className="carousel h-[600px] w-full">
+            <div className="m-2">
+                <div className="carousel h-[350px] md:h-[450px] lg:h-[600px] w-full">
                     <div id="slide1" className="carousel-item relative w-full">
                         <img src="https://i.postimg.cc/02jWMvyr/Samsung-Galaxy-S-series-evolution.jpg" className="w-full" />
                         <div className="absolute flex right-10 gap-5 bottom-5 transform  -translate-y-1/2 ">
