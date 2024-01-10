@@ -9,11 +9,11 @@ const Home = () => {
         
         <div>
 
-            <div className="carousel w-full">
-                <div className="carousel h-[350px] md:h-[450px] lg:h-[600px] w-full">
+            <div className="">
+                <div className="carousel w-full p-2  h-52 md:h-[450px] lg:h-[600px]">
                     <div id="slide1" className="carousel-item relative w-full">
                         <img src="https://i.postimg.cc/02jWMvyr/Samsung-Galaxy-S-series-evolution.jpg" className="w-full" />
-                        <div className="absolute flex right-10 gap-5 bottom-5 transform  -translate-y-1/2 ">
+                        <div className="absolute  flex right-10 gap-5 bottom-5 transform  -translate-y-1/2 ">
                         <a href="#slide6" className="btn btn-circle bg-success">❮</a> 
                         <a href="#slide2" className="btn btn-circle bg-success">❯</a>
                         </div>
