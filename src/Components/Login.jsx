@@ -8,7 +8,7 @@ const Login = () => {
     const {user,signIn,forgetPassword,emailVerification,signWithGoogle,signWithGithub}=useContext(AuthContext);
     const emailRef=useRef(null);
     const location=useLocation();
-    console.log('login',location);
+    console.log('login',location);   
 
 
     const handleLogin=e=>{

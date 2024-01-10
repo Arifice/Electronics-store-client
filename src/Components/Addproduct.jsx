@@ -1,10 +1,12 @@
 
 // import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const Addproduct = () => {
-    // const navigate=useNavigate();
+     const navigate=useNavigate();
+     const location =useLocation();
     const handleAddProduct=e=>{
         
         e.preventDefault();
@@ -35,9 +37,10 @@ const Addproduct = () => {
                         title: "Success",
                         text: "Product is successfully added",        
                     })
-                    // navigate('/');
+                    form.reset();
+                    navigate(location?.state?location.state:'/');
                 }
-                // form.reset();
+                
                 
             })
         }

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaEye,FaEyeSlash } from "react-icons/fa";
@@ -9,7 +9,8 @@ const Register = () => {
     const {createUser,emailVerification}=useContext(AuthContext);
     const [registerError,setRegisterErrore]=useState('');
     const [showPassword, setShowPassword]=useState(false); 
-    const navigate=useNavigate();   
+    const navigate=useNavigate(); 
+    const location=useLocation();  
     console.log(registerError);
     const handleRegister=e=>{
         e.preventDefault();

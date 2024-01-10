@@ -43,16 +43,7 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth,githubProvider);
     } 
 
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth,currentUser=>{
-            console.log('user in the on auth state',currentUser);
-            setUser(currentUser);
-            setLoading(false);
-        })
-       return()=>{
-        unSubscribe();
-       }
-    },[])
+   
 
     const authInfo={
         user,
@@ -66,6 +57,16 @@ const AuthProvider = ({children}) => {
         signWithGithub
 
     }
+    useEffect(()=>{
+        const unSubscribe = onAuthStateChanged(auth,currentUser=>{
+            console.log('user in the on auth state',currentUser);
+            setUser(currentUser);
+            setLoading(false);
+        })
+       return()=>{
+        unSubscribe();
+       }
+    },[])
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

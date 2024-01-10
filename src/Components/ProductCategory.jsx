@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link,  useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaCartPlus } from "react-icons/fa";
 
-const ProductCategory = () => {
+const ProductCategory = () => {    
     const brandType=useParams();
     const {user}=useContext(AuthContext);
     const navigate=useNavigate();
     
+    
     const [loadedProducts,setLoadedProducts]=useState([]);
-    const [dbCart,setDbCart]=useState([]);
-   
+    const [dbCart,setDbCart]=useState([]);  
 
     console.log('catagory',brandType.id);     
     
@@ -33,9 +33,8 @@ const ProductCategory = () => {
             })
   },[])
 
-    const matchProducts = loadedProducts.filter(product=>product.brandName.toLowerCase()==brandType.id.toLowerCase())
-    
-    
+    const matchProducts = loadedProducts.filter(product=>product.brandName.toLowerCase()===brandType.id.toLowerCase())
+       
     console.log('load',loadedProducts);
     console.log('dbcart',dbCart);
 
@@ -53,7 +52,7 @@ const ProductCategory = () => {
         console.log('find product',findProduct);          
         console.log('cart product',cartProduct);  
         
-        const selectcart=dbCart.filter(cart=>cart._id==id);
+        const selectcart=dbCart.filter(cart=>cart._id===id);
         console.log('select cart',selectcart);
         if(selectcart.length>0){
             Swal.fire({
@@ -99,8 +98,7 @@ const ProductCategory = () => {
               cancelButtonColor: "#d33",
               confirmButtonText: "Yes, delete it!"
             }).then((result) => {
-              if (result.isConfirmed) {
-                
+              if (result.isConfirmed) {                
                 fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product/${_id}`,{
                   method:'DELETE'                
                 })
@@ -108,12 +106,14 @@ const ProductCategory = () => {
                 .then(data=>{
                   console.log(data);
                   if(data.deletedCount>0){                   
-                    
+                    const remaining=loadedProducts.filter(product=>product._id!=_id);
+                    setLoadedProducts(remaining)
                       Swal.fire({
                           title: "Deleted!",
                           text: "Your product has been deleted.",
                           icon: "success"
-                        });                        
+                        }); 
+
                   }
                 })
               }

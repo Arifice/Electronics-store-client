@@ -3,36 +3,41 @@
     {
       "id": "1",
       "name": "Apple",
-      "image": "https://i.postimg.cc/cHpsVnQV/Apple-Computer-Logo-rainbow-svg.png"      
+      "image": "https://i.postimg.cc/cHpsVnQV/Apple-Computer-Logo-rainbow-svg.png",      
+      "description" :"Powerful ecommerce product  to help you easy work "
     },
     {
       "id": "2",
       "name": "Samsung",
-      "image": "https://i.postimg.cc/nrydJHzR/samsung-logo1-300x300-e1465307161764.jpg"
-      
+      "image": "https://i.postimg.cc/nrydJHzR/samsung-logo1-300x300-e1465307161764.jpg",
+      "description" :"Powerful ecommerce product  to help you easy work "
     },
     {
         "id": "3",
         "name": "Sony",
-        "image": "https://i.postimg.cc/RV5H53d1/sony-logo-concept-2023-by-wbblackofficial-dg3l2sa-pre.jpg"
+        "image": "https://i.postimg.cc/RV5H53d1/sony-logo-concept-2023-by-wbblackofficial-dg3l2sa-pre.jpg",
+        "description" :"Powerful ecommerce product  to help you easy work "
         
     },
     {
         "id": "4",
         "name": "Lenovo",
-        "image": "https://i.postimg.cc/90PsfR7R/bce91c33647416-56b3aa52abc2d.png"
+        "image": "https://i.postimg.cc/YCJNHb0W/Lenovo-logo-English-svg.png",
+        "description" :"Powerful ecommerce product  to help you easy work "
         
     },
     {
         "id": "5",
         "name": "Intel",
-        "image": "https://i.postimg.cc/XqgDbRR9/intel-logo-56a6fa195f9b58b7d0e5ce3a.png"
+        "image": "https://i.postimg.cc/XqgDbRR9/intel-logo-56a6fa195f9b58b7d0e5ce3a.png",
+        "description" :"Powerful ecommerce product  to help you easy work "
         
     },
     {
         "id": "6",
         "name": "Hp",
-        "image": "https://i.postimg.cc/C1GcCyL9/Hewlett-Packard-Logo-2008-2014.png"
+        "image": "https://i.postimg.cc/C1GcCyL9/Hewlett-Packard-Logo-2008-2014.png",
+        "description" :"Powerful ecommerce product  to help you easy work "
         
     }
     

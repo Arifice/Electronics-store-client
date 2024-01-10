@@ -70,7 +70,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/updateProduct/:id',
-        element:<UpdateProduct></UpdateProduct>,
+        element:<PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
         loader:({params})=>fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/product/${params.id}`)
       },
       {
@@ -80,12 +80,12 @@ const router = createBrowserRouter([
       },
       {
         path:'/updateUser/:id',
-        element:<UpdateUser></UpdateUser>,
+        element:<PrivateRoute><UpdateUser></UpdateUser></PrivateRoute>,
         loader:({params})=>fetch(`https://b8a10-brandshop-server-side-arifice-qyfc.vercel.app/user/${params.id}`)
       }, 
       {
         path:'/category/:id',
-        element:<ProductCategory></ProductCategory>        
+        element:<PrivateRoute><ProductCategory></ProductCategory> </PrivateRoute>       
       } 
       
     ]
